@@ -23,7 +23,7 @@ export async function POST(req: Request) {
   Rules: 
   - Generate only SELECT queries (No INSERT, DROP, UPDATE, DELETE)
   - Return valid SQLite syntax
-  `
+  `;
 
   const result = streamText({
     model: openRouter.chat("openrouter/free"),
