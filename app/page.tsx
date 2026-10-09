@@ -15,12 +15,16 @@ export default function Chat() {
             switch (part.type) {
               case "text":
                 return <div key={`${message.id}-${i}`}>{part.text}</div>;
-              case "tool-query":
+              case "tool-db":
                 return (
                   <pre key={`${message.id}-${i}`}>
-                    {part.output == null
-                      ? ""
-                      : JSON.stringify(part.output, null, 2)}
+                    {part.output == null ? "" : JSON.stringify(part, null, 2)}
+                  </pre>
+                );
+              case "tool-schema":
+                return (
+                  <pre key={`${message.id}-${i}`}>
+                    {part.output == null ? "" : JSON.stringify(part, null, 2)}
                   </pre>
                 );
             }
