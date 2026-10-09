@@ -1,4 +1,4 @@
-import { db } from "@/db/db";
+import { getDb } from "@/db/db";
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import {
   streamText,
@@ -69,7 +69,7 @@ CREATE TABLE sales (
           query: z.string().describe("The SQL query to be ran"),
         }),
         execute: async ({ query }) => {
-          return await db.run(query);
+          return await getDb().run(query);
         },
       }),
     },

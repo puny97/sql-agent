@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment variables
+
+The chat API uses `OPENROUTER_API_KEY` and `TURSO_DATABASE_URL`. Set `TURSO_AUTH_TOKEN` when connecting to a remote Turso database. Configure these in `.env.local` for local development and in the hosting environment for deployment.
+
+The database client is initialized only when a chat query accesses the database, so CI builds do not need Turso credentials. Runtime requests that query the database still require a valid `TURSO_DATABASE_URL`.
+
 ## Getting Started
 
 First, run the development server:
