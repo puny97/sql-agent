@@ -27,14 +27,17 @@ export async function POST(req: Request) {
   Rules: 
   - Generate only SELECT queries (No INSERT, DROP, UPDATE, DELETE)
   - Always use the schema provided by the schema tool
-  - Return valid SQLite syntax
+  - Pass in valid SQl syntax in db tool.
+  - IMPORTANT: To query database call db tool, Dont return just SQL query.
+  
+  Always respond in a helpful, conversational tone while being technically accurate.
   `;
 
   const result = streamText({
     model: openRouter.chat("openrouter/free"),
     messages: await convertToModelMessages(messages),
     system: SYSTEM_PROMPT,
-    stopWhen: isStepCount(5),
+    stopWhen: isStepCount(10),
     tools: {
       schema: tool({
         description: "Call this tool to get database schema information",
